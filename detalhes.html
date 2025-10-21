@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Partida | CBBF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* stylo especifico pra detalhes :) */
+        .detalhes-container {
+            background-color: var(--cor-fundo-card);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 180, 216, 0.1);
+        }
+        .detalhes-header {
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .detalhes-header h1 {
+            color: var(--cor-primaria);
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        .status-grande {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: 700;
+            color: var(--cor-fundo-principal);
+            font-size: 1.1rem;
+        }
+        /* Cores de Status grandes */
+        .status-grande.verde { background-color: var(--cor-sucesso); }
+        .status-grande.amarelo { background-color: var(--cor-alerta); color: #333; }
+        .status-grande.cinza { background-color: var(--cor-neutra); }
+        .status-grande.vermelho { background-color: var(--cor-erro); }
+
+        .info-secao {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 4px solid var(--cor-primaria);
+            background-color: var(--cor-fundo-principal);
+            border-radius: 5px;
+        }
+        .info-secao h3 {
+            color: var(--cor-secundaria);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .info-item p {
+            margin-bottom: 5px;
+        }
+        .time-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid var(--cor-primaria);
+        }
+        .time-card h4 {
+            color: var(--cor-primaria);
+            margin-bottom: 10px;
+        }
+        .player-tag {
+            display: block;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 5px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+        }
+        .link-replay {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background-color: var(--cor-secundaria);
+            color: var(--cor-fundo-principal);
+            font-weight: 700;
+            border-radius: 8px;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        .link-replay:hover {
+            background-color: #ffb700;
+        }
+        .vencedor-destaque {
+            font-size: 1.2rem;
+            color: var(--cor-sucesso);
+            font-weight: 700;
+            margin-top: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-bar">
+            <a href="index.html" class="logo"><i class="fas fa-crosshairs"></i>Detalhes</a>
+            <nav>
+                <ul>
+                    <li><a href="regras.html">Regras</a></li>
+                    <li><a href="participar.html">Quero Participar</a></li>
+                    <li><a href="pareamento.html">Jogar Apostado</a></li>
+                    <li><a href="admin.html" class="btn-header">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="detalhes-partida">
+            <p class="msg-sem-partida">Buscando detalhes da partida...</p>
+        </section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

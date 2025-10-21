@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Participar | CBBF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* separar né pai pq ninguem é de ferro */
+        .participar-content {
+            background-color: var(--cor-fundo-card);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .participar-content h2 {
+            color: var(--cor-secundaria);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .passo-a-passo {
+            counter-reset: step-counter;
+            padding: 20px 0;
+        }
+        .passo-a-passo li {
+            counter-increment: step-counter;
+            margin-bottom: 25px;
+            padding-left: 60px;
+            position: relative;
+            list-style: none;
+        }
+        .passo-a-passo li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--cor-primaria);
+            color: var(--cor-fundo-principal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .discord-tag {
+            background-color: #5865f2; /* Cor Discord */
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .requisitos strong {
+            color: var(--cor-primaria);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-bar">
+            <a href="index.html" class="logo"><i class="fas fa-crosshairs"></i>Participar</a>
+            <nav>
+                <ul>
+                    <li><a href="regras.html">Regras</a></li>
+                    <li><a href="participar.html">Quero Participar</a></li>
+                    <li><a href="pareamento.html">Jogar Apostado</a></li>
+                    <li><a href="admin.html" class="btn-header">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="participar-content">
+            <h1>🤝 Como Participar das Apostas</h1>
+
+            <p>Se você tem o espírito de um pirata e a coragem de apostar seu Tesouro, siga o passo a passo para se inscrever e lutar por grandes prêmios!</p>
+
+            <ol class="passo-a-passo">
+                <li>
+                    <h2>Basta clicar no botão "Jogar Apostado" no topo do site ou entre em Contato com o Staff (dhpedro)</h2>
+                    <p>Todo o processo de agendamento e confirmação de aposta é feito através de nosso servidor oficial no Discord.</p>
+                    <a href="https://discord.gg/pF6jQJCpyD" style="color: inherit; text-decoration: none;">
+    <p class="discord-tag">
+        <i class="fab fa-discord"></i>SERVIDOR
+    </p>
+</a>
+                </li>
+                <li>
+                    <h2>Confirmação e Agendamento</h2>
+                    <p>Após a confirmação do valor e do formato, o Admin agendará uma data e hora para a partida e enviará um link de convite para o servidor privado do confronto.</p>
+                </li>
+                <li>
+                    <h2>Depósito da Aposta</h2>
+                    <p>Os jogadores devem transferir o valor acordado para a conta de custódia antes do horário agendado. Isso garante que o prêmio seja pago ao vencedor e evita desistências.</p>
+                </li>
+                <li>
+                    <h2>Lute e Grave!</h2>
+                    <p>Compareça ao servidor e inicie o combate. Lembre-se: A gravação da tela (Replay) é obrigatória para validação do resultado!</p>
+                </li>
+            </ol>
+
+            <h2>⚙️ Requisitos Mínimos</h2>
+            <div class="requisitos">
+                <ul>
+                    <li><strong>Nível Mínimo:</strong> 1500 (Recomendamos Max Level para disputas justas).</li>
+                    <li><strong>Itens Permitidos:</strong> Todos os itens de combate são liberados, a menos que haja um acordo específico com o oponente (e validado pelo Admin).</li>
+                    <li><strong>Requisito Técnico:</strong> Conexão estável e capacidade de gravar o gameplay.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </main>
+</body>
+</html>

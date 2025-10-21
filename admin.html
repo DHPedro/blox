@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Admin | CBBF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .painel-content {
+            background-color: var(--cor-fundo-card);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .painel-content h2 {
+            color: var(--cor-secundaria);
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--cor-primaria);
+            background-color: var(--cor-fundo-principal);
+            color: var(--cor-texto);
+        }
+        .btn-submit, #btn-logout {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-submit {
+            background-color: var(--cor-sucesso);
+            color: var(--cor-fundo-principal);
+        }
+        .admin-partida-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .admin-partida-item button {
+            margin-left: 5px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-bar">
+            <a href="index.html" class="logo"><i class="fas fa-crosshairs"></i>CBBF Admin</a>
+            <div id="admin-actions" style="display:none;">
+                 <button id="btn-logout" class="btn-header">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="login-form" class="painel-content">
+            <h2>Login de Administrador</h2>
+            <form id="login-form-content"> 
+                <div class="form-group">
+                    <label for="admin-email">Email:</label>
+                    <input type="email" id="admin-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-senha">Senha:</label>
+                    <input type="password" id="admin-senha" required>
+                </div>
+                <button type="submit" class="btn-submit">Entrar</button>
+            </form>
+        </section>
+
+        <section id="admin-panel" class="painel-content" style="display:none;">
+            <h1><i class="fas fa-cogs"></i> Painel de Controle</h1>
+
+            <div style="margin-top: 30px;">
+                <h2>Criar Nova Partida</h2>
+                <form id="partida-form">
+                    <div class="form-group">
+                        <label for="p-valor">Valor Apostado:</label>
+                        <input type="number" id="p-valor" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="p-status">Status Inicial:</label>
+                        <select id="p-status" required>
+                            <option value="Pendente">Pendente</option>
+                            <option value="Em Andamento">Em Andamento</option>
+                            <option value="Finalizada">Finalizada</option>
+                            <option value="Anulada">Anulada</option>
+                        </select>
+                    </div>
+                    
+                    <div style="border: 1px solid var(--cor-secundaria); padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+                        <p style="color: var(--cor-secundaria); font-weight: 600; margin-bottom: 10px;"><i class="fas fa-users"></i> Formato da Partida (NvN):</p>
+                        <div style="display: flex; gap: 20px;">
+                            <div class="form-group" style="flex: 1;">
+                                <label for="num-jogadores-a">Jogadores Time A:</label>
+                                <input type="number" id="num-jogadores-a" min="1" max="5" value="1" required>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label for="num-jogadores-b">Jogadores Time B:</label>
+                                <input type="number" id="num-jogadores-b" min="1" max="5" value="1" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="jogadores-inputs-container">
+                        </div>
+                    
+                    <div class="form-group">
+                        <label for="p-vencedor">Vencedor (Apenas se Finalizada):</label>
+                        <input type="text" id="p-vencedor" placeholder="Ex: Time A ou Nome do Jogador Vencedor">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-replay-url">Link do Replay (URL):</label>
+                        <input type="url" id="p-replay-url">
+                    </div>
+                    <div class="form-group">
+                        <label for="p-descricao">Observações/Descrição:</label>
+                        <textarea id="p-descricao"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit"><i class="fas fa-plus-circle"></i> Salvar Partida</button>
+                </form>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h2>Gerenciar Partidas Existentes</h2>
+                <div id="lista-admin-partidas">
+                    <p>Carregando lista...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
