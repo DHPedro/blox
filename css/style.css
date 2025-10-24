@@ -8,7 +8,7 @@
     --cor-fundo-card: #1e1e1e; /* Fundo de Cards/Elementos */
     --cor-texto: #ffffff;
     --cor-neutra: #a0a0a0;
-    
+   
     --cor-sucesso: #4caf50; /* Verde */
     --cor-erro: #f44336; /* Vermelho */
 }
@@ -96,6 +96,11 @@ header {
     background-color: var(--cor-fundo-card);
     border-bottom: 3px solid var(--cor-primaria);
     padding: 10px 0;
+}
+
+/* Adicionar um pequeno padding horizontal fixo para evitar que o conteúdo toque as bordas da tela */
+header .container {
+    padding: 10px 15px; /* Adiciona padding lateral para telas muito estreitas */
 }
 
 .nav-bar {
@@ -323,12 +328,112 @@ nav ul li {
     display: inline-block;
 }
 
-/* Responsividade para botões de ação */
+/* ==================================== */
+/* RESPONSIVIDADE (MEDIA QUERIES) */
+/* ==================================== */
+
+/* Dispositivos Médios e Pequenos (max-width: 768px) */
 @media (max-width: 768px) {
+    
+    /* Ações de Pareamento */
     .acoes-pareamento {
         flex-direction: column;
+        gap: 20px; /* Reduz o gap */
+        margin-top: 20px;
     }
     .large-btn {
         max-width: 100%;
     }
+
+    /* Navegação (Menu Hamburger Base) */
+    .nav-bar {
+        /* Garante que a logo e o botão fiquem alinhados */
+        justify-content: space-between;
+    }
+    
+    nav ul {
+        /* Configuração para menu mobile */
+        display: none; /* Inicialmente esconde o menu (mostrado via JS) */
+        position: absolute;
+        top: 65px; /* Altura aproximada do header */
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--cor-fundo-card);
+        border-top: 1px solid var(--cor-neutra);
+        z-index: 999;
+    }
+    
+    nav ul li {
+        margin-left: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 15px 20px;
+        text-align: center;
+    }
+    
+    /* Para telas >= 769px, o menu volta a ser inline (no min-width) */
+}
+
+/* Dispositivos Pequenos (max-width: 600px) */
+@media (max-width: 600px) {
+    
+    /* Títulos: Ajuste para Telas Menores */
+    h1 { font-size: 1.5em; } /* Reduz de 2em para 1.5em */
+    h2 { font-size: 1.2em; } /* Reduz de 1.5em para 1.2em */
+    
+    .logo {
+        font-size: 1em; /* Ajusta o tamanho da logo */
+    }
+
+    /* Container: Reduz o padding vertical para otimizar espaço */
+    .container {
+        padding: 15px 0;
+    }
+
+    /* Modal */
+    .modal-content {
+        margin: 10% auto; /* Ajusta a margem superior para o centro */
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(0, 180, 216, 0.5);
+    }
+    
+    .modal-content h2 {
+        font-size: 1.3em;
+    }
+    
+    /* Código de Partida */
+    .codigo-partida {
+        font-size: 1.8em;
+        margin: 10px 0;
+    }
+}
+
+/* Dispositivos Muito Pequenos (max-width: 480px) */
+@media (max-width: 480px) {
+    
+    /* Grids: Ajuste o minmax para garantir que o card caiba em telas muito estreitas */
+    .partidas-grid, .partidas-pareamento-grid {
+        gap: 15px; /* Diminui o espaçamento */
+        /* Permite que o card tenha um mínimo de 280px, crucial para celulares menores */
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    }
+    
+    /* Botões de Ação Grande */
+    .large-btn {
+        padding: 15px 25px; /* Reduz o padding */
+        font-size: 1.2em; /* Reduz o tamanho da fonte */
+    }
+}
+
+/* Garantia para Desktop (min-width: 769px) */
+/* Garante que o estado mobile não persista em telas maiores */
+@media (min-width: 769px) {
+    nav ul {
+        display: flex !important; 
+    }
+    /* Adicione aqui qualquer outro estilo que precise ser forçado para desktop */
 }
