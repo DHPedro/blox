@@ -98,9 +98,9 @@ header {
     padding: 10px 0;
 }
 
-/* Adicionar um pequeno padding horizontal fixo para evitar que o conteúdo toque as bordas da tela */
+/* Adiciona padding lateral para telas muito estreitas */
 header .container {
-    padding: 10px 15px; /* Adiciona padding lateral para telas muito estreitas */
+    padding: 10px 15px; 
 }
 
 .nav-bar {
@@ -136,6 +136,30 @@ nav ul li {
     background-color: var(--cor-secundaria);
     color: var(--cor-fundo-card);
 }
+
+/* Estilo para o ícone/botão de alternância (Hambúrguer) */
+.menu-toggle {
+    display: none; /* Por padrão, escondido no desktop */
+    background: none;
+    border: none;
+    color: var(--cor-primaria);
+    font-size: 2em;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+    z-index: 1001; 
+}
+
+/* Estilos para o ícone (três barras) */
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--cor-primaria);
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
 
 /* ==================================== */
 /* Partidas Grid Comum (index.html) */
@@ -335,25 +359,26 @@ nav ul li {
 /* Dispositivos Médios e Pequenos (max-width: 768px) */
 @media (max-width: 768px) {
     
-    /* Ações de Pareamento */
+    /* Ações de Pareamento (Empilha botões) */
     .acoes-pareamento {
         flex-direction: column;
-        gap: 20px; /* Reduz o gap */
+        gap: 20px; 
         margin-top: 20px;
     }
     .large-btn {
         max-width: 100%;
     }
 
-    /* Navegação (Menu Hamburger Base) */
-    .nav-bar {
-        /* Garante que a logo e o botão fiquem alinhados */
-        justify-content: space-between;
-    }
+    /* Navegação (Menu Hamburger) */
     
+    /* 1. MOSTRAR o botão de alternância no mobile */
+    .menu-toggle {
+        display: block; 
+    }
+
+    /* 2. ESCONDER o menu por padrão no mobile */
     nav ul {
-        /* Configuração para menu mobile */
-        display: none; /* Inicialmente esconde o menu (mostrado via JS) */
+        display: none; /* Escondido por padrão, aberto via JavaScript */
         position: absolute;
         top: 65px; /* Altura aproximada do header */
         left: 0;
@@ -362,8 +387,14 @@ nav ul li {
         background-color: var(--cor-fundo-card);
         border-top: 1px solid var(--cor-neutra);
         z-index: 999;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     }
     
+    /* 3. CLASSE PARA EXIBIR O MENU (Adicionada via JavaScript) */
+    .nav-bar.active nav ul {
+        display: flex; /* O menu aparece quando a classe 'active' for adicionada ao .nav-bar */
+    }
+
     nav ul li {
         margin-left: 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -375,18 +406,21 @@ nav ul li {
         text-align: center;
     }
     
-    /* Para telas >= 769px, o menu volta a ser inline (no min-width) */
+    /* Opcional: Ajusta o posicionamento do botão extra do header em telas pequenas */
+    .btn-header {
+        margin-left: 10px;
+    }
 }
 
 /* Dispositivos Pequenos (max-width: 600px) */
 @media (max-width: 600px) {
     
     /* Títulos: Ajuste para Telas Menores */
-    h1 { font-size: 1.5em; } /* Reduz de 2em para 1.5em */
-    h2 { font-size: 1.2em; } /* Reduz de 1.5em para 1.2em */
+    h1 { font-size: 1.5em; } 
+    h2 { font-size: 1.2em; } 
     
     .logo {
-        font-size: 1em; /* Ajusta o tamanho da logo */
+        font-size: 1em; 
     }
 
     /* Container: Reduz o padding vertical para otimizar espaço */
@@ -396,7 +430,7 @@ nav ul li {
 
     /* Modal */
     .modal-content {
-        margin: 10% auto; /* Ajusta a margem superior para o centro */
+        margin: 10% auto; 
         padding: 20px;
         box-shadow: 0 0 15px rgba(0, 180, 216, 0.5);
     }
@@ -417,23 +451,26 @@ nav ul li {
     
     /* Grids: Ajuste o minmax para garantir que o card caiba em telas muito estreitas */
     .partidas-grid, .partidas-pareamento-grid {
-        gap: 15px; /* Diminui o espaçamento */
-        /* Permite que o card tenha um mínimo de 280px, crucial para celulares menores */
+        gap: 15px; 
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
     }
     
     /* Botões de Ação Grande */
     .large-btn {
-        padding: 15px 25px; /* Reduz o padding */
-        font-size: 1.2em; /* Reduz o tamanho da fonte */
+        padding: 15px 25px; 
+        font-size: 1.2em; 
     }
 }
 
 /* Garantia para Desktop (min-width: 769px) */
-/* Garante que o estado mobile não persista em telas maiores */
 @media (min-width: 769px) {
+    /* 4. ESCONDER o botão de alternância no desktop */
+    .menu-toggle {
+        display: none;
+    }
+
+    /* 5. GARANTIR que o menu esteja visível e inline no desktop */
     nav ul {
         display: flex !important; 
     }
-    /* Adicione aqui qualquer outro estilo que precise ser forçado para desktop */
 }
